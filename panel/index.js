@@ -1,8 +1,8 @@
 /*
  * @Author: CGT (caogtaa@gmail.com) 
  * @Date: 2020-01-16 22:09:21 
- * @Last Modified by:   CGT (caogtaa@gmail.com) 
- * @Last Modified time: 2020-01-16 22:09:21 
+ * @Last Modified by: CGT (caogtaa@gmail.com)
+ * @Last Modified time: 2020-01-16 23:45:39
  */
 
 'use strict';
@@ -133,7 +133,12 @@ Editor.Panel.extend({
   // method executed when template and styles are successfully loaded and initialized
   ready () {
     const fs = require('fs');
-    const configPath = Editor.Project.path + '/scene-menu-config.json';
+    let configPath = Editor.Project.path + '/scene-menu-config.json';
+    Editor.log(configPath);
+    if (!fs.existsSync(configPath)) {
+      // read default config
+      configPath = Editor.url('packages://cc-ext-scene-menu/default-config.json');
+    }
 
     let saveConfig = () => {
       let data = JSON.stringify(_config, null, 4);

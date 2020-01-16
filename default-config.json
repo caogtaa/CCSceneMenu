@@ -1,0 +1,43 @@
+[
+    {
+        "type": "1",
+        "name": "Edit Menu",
+        "uuid": "",
+        "submenu": [],
+        "command": "cc-ext-scene-menu:custom-context-menu"
+    },
+    {
+        "type": "2",
+        "name": "Create Node",
+        "uuid": "",
+        "submenu": [
+            {
+                "type": "0",
+                "name": "Empty Node",
+                "uuid": "",
+                "submenu": []
+            },            
+            {
+                "type": "0",
+                "name": "Your Prefab 1",
+                "uuid": "",
+                "submenu": []
+            },
+            {
+                "type": "0",
+                "name": "Your Prefab 2",
+                "uuid": "",
+                "submenu": []
+            }
+        ],
+        "command": ""
+    },
+    {
+        "type": "1",
+        "name": "Say Hello",
+        "uuid": "",
+        "submenu": [],
+        "command": "cc-ext-scene-menu:say-hello",
+        "param": "{\"a\":1, \"b\":2}"
+    }
+]

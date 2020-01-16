@@ -1,8 +1,8 @@
 /*
  * @Author: CGT (caogtaa@gmail.com) 
  * @Date: 2020-01-16 22:09:08 
- * @Last Modified by:   CGT (caogtaa@gmail.com) 
- * @Last Modified time: 2020-01-16 22:09:08 
+ * @Last Modified by: CGT (caogtaa@gmail.com)
+ * @Last Modified time: 2020-01-16 23:46:33
  */
 
 'use strict';
@@ -61,7 +61,12 @@ function generateMenuTemplate(conf) {
 
 function loadMenu() {
   const fs = require('fs');
-  const configPath = Editor.Project.path + '/scene-menu-config.json';
+  let configPath = Editor.Project.path + '/scene-menu-config.json';
+  if (!fs.existsSync(configPath)) {
+    // read default config
+    configPath = Editor.url('packages://cc-ext-scene-menu/default-config.json');
+  }
+
   fs.readFile(configPath, function(err, data) {
     if (err) {
       // file not exists

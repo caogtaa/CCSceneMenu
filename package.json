@@ -13,8 +13,8 @@
     "main": "panel/index.js",
     "type": "dockable",
     "title": "Custom Scene Context Menu",
-    "width": 400,
-    "height": 300
+    "width": 550,
+    "height": 400
   },
   "scene-script": "scene-accessor.ts"
 }

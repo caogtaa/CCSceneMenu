@@ -2,7 +2,7 @@
  * @Author: CGT (caogtaa@gmail.com) 
  * @Date: 2020-01-16 22:09:21 
  * @Last Modified by: CGT (caogtaa@gmail.com)
- * @Last Modified time: 2020-01-16 23:45:39
+ * @Last Modified time: 2020-01-17 07:32:06
  */
 
 'use strict';
@@ -75,14 +75,14 @@ Editor.Panel.extend({
 
   // html template for panel
   template: `
-    <h2>Custom Scene Context Menu</h2>
+    <h2>${Editor.T('cc-ext-scene-menu.PNL_title')}</h2>
     <hr />
-    <p>Click to edit item, right click to add / remove item</p>
+    <p>${Editor.T('cc-ext-scene-menu.PNL_hint')}</p>
     <div v-if="d.loaded">
       <ul class="root">
         <li>
           <span class="caret caret-down" v-on:click="toggleCaret"></span>
-          <span v-bind:class="{ selected: d.focus_item==null }" v-on:click="d.focus_item=null;" v-on:contextmenu="onContextMenu($event, true, null)">Context Menu (root)</span>
+          <span v-bind:class="{ selected: d.focus_item==null }" v-on:click="d.focus_item=null;" v-on:contextmenu="onContextMenu($event, true, null)">${Editor.T('cc-ext-scene-menu.PNL_root')}</span>
           <ul class="nested active">
             <li v-for="c in d.config">
               <span v-show="c.type == '2'" class="caret" v-on:click="toggleCaret"></span>
@@ -100,29 +100,29 @@ Editor.Panel.extend({
       </ul>
 
       <ui-box-container v-if="d.focus_item">
-        <ui-prop name="Name">
-          <ui-input v-value="d.focus_item.name" placeholder="menu display name"></ui-input>
+        <ui-prop name="${Editor.T('cc-ext-scene-menu.PNL_name')}">
+          <ui-input v-value="d.focus_item.name" placeholder="${Editor.T('cc-ext-scene-menu.PNL_name_ph')}"></ui-input>
         </ui-prop>
-        <ui-prop name="Type">
+        <ui-prop name="${Editor.T('cc-ext-scene-menu.PNL_type')}">
           <ui-select v-value="d.focus_item.type" @change="onTypeChange($event)">
-            <option value="0">Prefab</option>
-            <option value="1">Command</option>
-            <option value="2">Sub Menu</option>
+            <option value="0">${Editor.T('cc-ext-scene-menu.PNL_prefab')}</option>
+            <option value="1">${Editor.T('cc-ext-scene-menu.PNL_command')}</option>
+            <option value="2">${Editor.T('cc-ext-scene-menu.PNL_submenu')}</option>
           </ui-select>
         </ui-prop>
-        <ui-prop name="Prefab uuid" v-if="d.focus_item.type=='0'">
+        <ui-prop name="${Editor.T('cc-ext-scene-menu.PNL_prefab_uuid')}" v-if="d.focus_item.type=='0'">
           <ui-input v-value="d.focus_item.uuid" placeholder="prefab uuid"></ui-input>
         </ui-prop>
-        <ui-prop name="Command" v-if="d.focus_item.type=='1'">
-          <ui-input v-value="d.focus_item.command" placeholder="PluginName:CommandName"></ui-input>
+        <ui-prop name="${Editor.T('cc-ext-scene-menu.PNL_command')}" v-if="d.focus_item.type=='1'">
+          <ui-input v-value="d.focus_item.command" placeholder="${Editor.T('cc-ext-scene-menu.PNL_command_ph')}"></ui-input>
         </ui-prop>
-        <ui-prop name="Parameter" v-if="d.focus_item.type=='1'">
-          <ui-input v-value="d.focus_item.param" placeholder="(Optional) Command Parameter"></ui-input>
+        <ui-prop name="${Editor.T('cc-ext-scene-menu.PNL_parameter')}" v-if="d.focus_item.type=='1'">
+          <ui-input v-value="d.focus_item.param" placeholder="${Editor.T('cc-ext-scene-menu.PNL_parameter_ph')}"></ui-input>
         </ui-prop>
       </ui-box-container>
 
       <hr />
-      <ui-button id="save" @confirm="onSaveConfirm">Save Menu</ui-button>
+      <ui-button id="save" @confirm="onSaveConfirm">${Editor.T('cc-ext-scene-menu.PNL_save')}</ui-button>
     </div>
   `,
 
@@ -134,7 +134,7 @@ Editor.Panel.extend({
   ready () {
     const fs = require('fs');
     let configPath = Editor.Project.path + '/scene-menu-config.json';
-    Editor.log(configPath);
+    // Editor.log(configPath);
     if (!fs.existsSync(configPath)) {
       // read default config
       configPath = Editor.url('packages://cc-ext-scene-menu/default-config.json');
@@ -183,7 +183,7 @@ Editor.Panel.extend({
             if (!parent) {
               // max depth is 2
               menuTemplate.push({
-                label: "Add Child",
+                label: Editor.T('cc-ext-scene-menu.PNL_add_child'),
                 click () {
                   let newItem = {
                     type: "0",
@@ -214,7 +214,7 @@ Editor.Panel.extend({
             if (!isRoot) {
               let d = this.d;
               menuTemplate.push({
-                label: "Delete",
+                label: Editor.T('cc-ext-scene-menu.PNL_delete'),
                 click () {
                   if (obj && parent) {
                     // deep level item

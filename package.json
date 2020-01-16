@@ -5,14 +5,14 @@
   "author": "caogtaa@gmail.com",
   "main": "main.js",
   "main-menu": {
-    "i18n:MAIN_MENU.package.title/Scene Menu/Edit Scene Menu": {
+    "i18n:MAIN_MENU.package.title/i18n:cc-ext-scene-menu.PKG_scene_menu/i18n:cc-ext-scene-menu.PKG_edit": {
       "message": "cc-ext-scene-menu:custom-context-menu"
     }
   },
   "panel": {
     "main": "panel/index.js",
     "type": "dockable",
-    "title": "Custom Scene Context Menu",
+    "title": "i18n:cc-ext-scene-menu.PNL_title",
     "width": 550,
     "height": 400
   },

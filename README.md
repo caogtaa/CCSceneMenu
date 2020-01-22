@@ -21,9 +21,9 @@ Cocos Creator的场景编辑器没有自带的右键菜单，也不提供右键�
 
 <a name="bJ3D5"></a>
 ### 效果
-场景编辑器<br />![image.png](img/create_node.gif)
+场景编辑器<br />![image.gif](img/create_node.gif)
 
-菜单管理<br />![image.png](img/new_item.gif)<br />![image.png](img/command.png)
+菜单管理<br />![image.gif](img/new_item.gif)<br />![image.png](img/command.png)
 
 <a name="PCuTN"></a>
 ### 如何安装

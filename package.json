@@ -16,5 +16,5 @@
     "width": 550,
     "height": 400
   },
-  "scene-script": "scene-accessor.ts"
+  "scene-script": "scene-accessor.js"
 }
